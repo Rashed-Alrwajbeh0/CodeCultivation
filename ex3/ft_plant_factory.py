@@ -1,10 +1,11 @@
 class Plant:
     total = 0
+
     def __init__(self, name: str, hight: int, age: int):
         self.name = name
         self.hight = hight
         self.age = age
-        Plant.total+=1
+        Plant.total += 1
         print(f"Created: {self.name.capitalize()}", end=" ")
         print(f"({self.hight}cm, {self.age} days)")
 

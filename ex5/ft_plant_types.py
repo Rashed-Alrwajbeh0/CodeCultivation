@@ -1,5 +1,5 @@
 class Plant:
-    def __init__(self, name:str, height:int, age:int):
+    def __init__(self, name: str, height: int, age: int):
         self.name = name
         self.age = age
         self.height = height
@@ -7,8 +7,9 @@ class Plant:
     def get_info(self):
         return f"{self.height}cm, {self.age} days,"
 
+
 class Flower (Plant):
-    def __init__(self, name:str, height:int, age:int, color:str):
+    def __init__(self, name: str, height: int, age: int, color: str):
         super().__init__(name, height, age)
         self.color = color
 
@@ -19,8 +20,9 @@ class Flower (Plant):
         print(f"{self.name} (Flower): ", end="")
         print(super().get_info(), f"{self.color} color")
 
+
 class Tree (Plant):
-    def __init__(self, name:str, height:int, age:int, trunk_diameter:int):
+    def __init__(self, name: str, height: int, age: int, trunk_diameter: int):
         super().__init__(name, height, age)
         self.trunk_diameter = trunk_diameter
 
@@ -32,9 +34,10 @@ class Tree (Plant):
         print(f"{self.name} (Tree):", end=" ")
         print(super().get_info(), f"{self.trunk_diameter}cm diameter")
 
+
 class Vegetable(Plant):
-    def __init__(self, name:str, height:int, age:int, harvest_season:str,
-                 nutritional_value:str):
+    def __init__(self, name: str, height: int, age: int, harvest_season: str,
+                 nutritional_value: str):
         super().__init__(name, height, age)
         self.harvest_season = harvest_season
         self.nutritional_value = nutritional_value
@@ -42,7 +45,8 @@ class Vegetable(Plant):
     def get_info(self):
         print(f"{self.name} (Vegetable):", super().get_info(), end="")
         print(f"{self.harvest_season} harvest")
-        print(self.name,self.nutritional_value)
+        print(self.name, self.nutritional_value)
+
 
 if __name__ == "__main__":
     flower1 = Flower("Rose", 25, 30, "red")

@@ -171,7 +171,7 @@ class GardenManager:
         if self.check_manager(manager, self.__managers_names):
             idx = self.__managers_names.index(manager)
             self.__managers[idx].add_plant(species, name,
-                                           age, height, color, points)
+                                           height, age, color, points)
         else:
             print("This manager does not exist")
 
@@ -209,7 +209,7 @@ if __name__ == "__main__":
 
     print("=== Garden Management System Demo ===")
 
-    manager.add_plant("Alice", "Plant", "Oak Tree", 100, 10)
+    manager.add_plant("Alice", "Plant", "Oak Tree", -100, 10)
     manager.add_plant("Alice", "FloweringPlant", "Rose", 25, 2, "red")
     manager.add_plant("Alice", "PrizeFlower", "Sunflower", 50, 1, "yellow", 10)
 

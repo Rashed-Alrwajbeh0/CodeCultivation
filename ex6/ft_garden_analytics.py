@@ -1,27 +1,27 @@
 class Plant:
-    def __init__(self, name: str, height: int, age: int):
+    def __init__(self, name: str, height: int, age: int) -> None:
         self.set_name(name)
         self.set_age(age)
         self.set_height(height)
 
-    def get_name(self):
+    def get_name(self) -> str:
         return self.__name
 
-    def get_age(self):
+    def get_age(self) -> int:
         return self.__age
 
-    def get_height(self):
+    def get_height(self) -> int:
         return self.__height
 
-    def set_name(self, name: str):
+    def set_name(self, name: str) -> None:
         self.__name = name
 
-    def set_age(self, age: int):
+    def set_age(self, age: int) -> None:
         while age < 0:
             age = int(input("Please enter a positive age: "))
         self.__age = age
 
-    def set_height(self, height: int):
+    def set_height(self, height: int) -> None:
         while height < 0:
             height = int(input("Please enter a positive height: "))
         self.__height = height
@@ -33,36 +33,36 @@ class FloweringPlant(Plant):
         self.set_color(color)
         self.set_blooming(True)
 
-    def get_color(self):
+    def get_color(self) -> str:
         return self.__color
 
-    def get_blooming(self):
+    def get_blooming(self) -> bool:
         return self.__blooming
 
-    def set_color(self, color: str):
+    def set_color(self, color: str) -> None:
         self.__color = color
 
-    def set_blooming(self, blooming: bool):
+    def set_blooming(self, blooming: bool) -> None:
         self.__blooming = blooming
 
 
 class PrizeFlower(FloweringPlant):
     def __init__(self, name: str, height: int, age: int,
-                 color: str, points: int):
+                 color: str, points: int) -> None:
         super().__init__(name, height, age, color)
         self.set_points(points)
 
-    def get_points(self):
+    def get_points(self) -> int:
         return self.__points
 
-    def set_points(self, points: int):
+    def set_points(self, points: int) -> None:
         while points < 0:
             points = int(input("Please enter a positive points: "))
         self.__points = points
 
 
 class Garden:
-    def __init__(self, manager: str):
+    def __init__(self, manager: str) -> None:
         self.__manager = manager
         self.__plants = []
         self.__plants_species = []
@@ -70,7 +70,7 @@ class Garden:
         self.__growth = 0
 
     def add_plant(self, species: str, name: str, height: int, age: int,
-                  color: str = None, points: int = 0):
+                  color: str = None, points: int = 0) -> None:
         s = species.capitalize()
         if s != "Plant" and s != "Floweringplant" and s != "Prizeflower":
             print("The type must be Plant or FloweringPlant or PrizeFlower\n")
@@ -89,14 +89,14 @@ class Garden:
             print(f"Added {name} to {self.__manager}'s garden")
             self.__number_of_plants += 1
 
-    def grow_all(self, num: int):
+    def grow_all(self, num: int) -> None:
         print(f"{self.__manager} is helping all plants grow...")
         for i in self.__plants:
             self.__growth += num
             i.set_height(i.get_height() + num)
             print(f"{i.get_name()} grew {num}cm")
 
-    def calculate_score(self):
+    def calculate_score(self) -> int:
         ans = 0
         for i in range(len(self.__plants)):
             ans += self.__plants[i].get_height()
@@ -105,8 +105,8 @@ class Garden:
         return ans
 
     class statistics:
-        def __init__(self, name, number_of_plants, plants,
-                     plants_species, g, s):
+        def __init__(self, name: str, number_of_plants: int, plants: list,
+                     plants_species: list, g: int, s: int) -> None:
             self.__plants = plants
             self.__number_of_plants = number_of_plants
             self.__plants_species = plants_species
@@ -117,7 +117,7 @@ class Garden:
             self.__num_of_floweringplan = 0
             self.__num_of_prizeflower = 0
 
-        def calc_plants(self):
+        def calc_plants(self) -> None:
             for i in self.__plants_species:
                 if i.capitalize() == "Plant":
                     self.__num_of_plant += 1
@@ -126,7 +126,7 @@ class Garden:
                 else:
                     self.__num_of_prizeflower += 1
 
-        def print_info(self):
+        def print_info(self) -> None:
             print(f"=== {self.__name}'s Garden Report ===")
             for i in range(len(self.__plants)):
                 p = self.__plants[i]
@@ -152,22 +152,22 @@ class Garden:
 class GardenManager:
     __counter = 0
 
-    def __init__(self, owner: str):
+    def __init__(self, owner: str) -> None:
         self.__owner = owner
         self.__managers = []
         self.__managers_names = []
         GardenManager.__counter += 1
 
-    def add_manager(self, name):
+    def add_manager(self, name) -> None:
         self.__managers_names.append(name)
         self.__managers.append(Garden(name))
 
     @classmethod
-    def get_counter(cls):
+    def get_counter(cls) -> str:
         return f"Total gardens managed: {cls.__counter}"
 
     def add_plant(self, manager: str, species: str, name: str, height: int,
-                  age: int, color: str = None, points: int = 0):
+                  age: int, color: str = None, points: int = 0) -> None:
         if self.check_manager(manager, self.__managers_names):
             idx = self.__managers_names.index(manager)
             self.__managers[idx].add_plant(species, name,
@@ -175,17 +175,17 @@ class GardenManager:
         else:
             print("This manager does not exist")
 
-    def check_manager(self, name: str, names: list):
+    def check_manager(self, name: str, names: list) -> bool:
         return name in names
 
-    def grow_all(self, name: str, num: int):
+    def grow_all(self, name: str, num: int) -> None:
         if self.check_manager(name, self.__managers_names):
             idx = self.__managers_names.index(name)
             self.__managers[idx].grow_all(num)
         else:
             print("This manager does not exist")
 
-    def show_report(self, manager_name: str):
+    def show_report(self, manager_name: str) -> None:
         idx = self.__managers_names.index(manager_name)
         g = self.__managers[idx]
         stats_obj = Garden.statistics(
@@ -199,7 +199,7 @@ class GardenManager:
         stats_obj.print_info()
 
     @staticmethod
-    def test_height(height: int):
+    def test_height(height: int) -> None:
         print(f"Height validation test: {height > 0}")
 
 

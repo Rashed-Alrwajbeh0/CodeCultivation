@@ -1,19 +1,19 @@
 class Plant:
     growth_days = 0
 
-    def __init__(self, name: str, hight: int, age: int):
+    def __init__(self, name: str, hight: int, age: int) -> None:
         self.name = name
         self.hight = hight
         self.age = age
 
-    def display(self):
+    def display(self) -> None:
         print(f"{self.name.capitalize()}: {self.hight}cm, {self.age} days old")
 
-    def grow(self):
+    def grow(self) -> None:
         self.hight += 1
         self.growth_days += 1
 
-    def Age(self):
+    def Age(self) -> None:
         self.age += 1
 
 

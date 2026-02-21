@@ -1,19 +1,19 @@
 class Plant:
     growth_days = 0
 
-    def __init__(self, name: str, hight: int, age: int) -> None:
+    def __init__(self, name: str, height: int, age: int) -> None:
         self.name = name
-        self.hight = hight
+        self.height = height
         self.age = age
 
     def display(self) -> None:
-        print(f"{self.name.capitalize()}: {self.hight}cm, {self.age} days old")
+        print(f"{self.name.capitalize()}: {self.height}cm, {self.age} days old")
 
     def grow(self) -> None:
-        self.hight += 1
+        self.height += 1
         self.growth_days += 1
 
-    def Age(self) -> None:
+    def age(self) -> None:
         self.age += 1
 
 
@@ -23,5 +23,5 @@ if __name__ == "__main__":
         print(f"=== Day{x} ===")
         plant.display()
         plant.grow()
-        plant.Age()
+        plant.age()
     print(f"Growth this week: +{plant.growth_days - 1}cm")

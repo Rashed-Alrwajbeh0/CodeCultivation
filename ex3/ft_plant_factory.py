@@ -1,13 +1,13 @@
 class Plant:
     total = 0
 
-    def __init__(self, name: str, hight: int, age: int) -> None:
+    def __init__(self, name: str, height: int, age: int) -> None:
         self.name = name
-        self.hight = hight
+        self.height = height
         self.age = age
         Plant.total += 1
         print(f"Created: {self.name.capitalize()}", end=" ")
-        print(f"({self.hight}cm, {self.age} days)")
+        print(f"({self.height}cm, {self.age} days)")
 
 
 if __name__ == "__main__":

@@ -69,6 +69,18 @@ class Garden:
         self.__number_of_plants = 0
         self.__growth = 0
 
+    def get_len_plant(self) -> int:
+        return self.__number_of_plants
+
+    def get_plants(self) -> list:
+        return self.__plants
+
+    def get_plants_species(self) -> list:
+        return self.__plants_species
+
+    def get_growth(self) -> int:
+        return self.__growth
+
     def add_plant(self, species: str, name: str, height: int, age: int,
                   color: str = None, points: int = 0) -> None:
         s = species.capitalize()
@@ -104,7 +116,7 @@ class Garden:
                 ans += self.__plants[i].get_points()
         return ans
 
-    class statistics:
+    class Statistics:
         def __init__(self, name: str, number_of_plants: int, plants: list,
                      plants_species: list, g: int, s: int) -> None:
             self.__plants = plants
@@ -119,11 +131,12 @@ class Garden:
 
         def calc_plants(self) -> None:
             for i in self.__plants_species:
-                if i.capitalize() == "Plant":
+                name = i.lower()
+                if name == "plant":
                     self.__num_of_plant += 1
-                elif i.capitalize() == "Floweringplant":
+                elif name == "floweringplant":
                     self.__num_of_floweringplan += 1
-                else:
+                elif name == "prizeflower":
                     self.__num_of_prizeflower += 1
 
         def print_info(self) -> None:
@@ -188,12 +201,12 @@ class GardenManager:
     def show_report(self, manager_name: str) -> None:
         idx = self.__managers_names.index(manager_name)
         g = self.__managers[idx]
-        stats_obj = Garden.statistics(
+        stats_obj = Garden.Statistics(
             manager_name,
-            len(g._Garden__plants),
-            g._Garden__plants,
-            g._Garden__plants_species,
-            g._Garden__growth,
+            g.get_len_plant(),
+            g.get_plants(),
+            g.get_plants_species(),
+            g.get_growth(),
             g.calculate_score()
         )
         stats_obj.print_info()
@@ -209,7 +222,7 @@ if __name__ == "__main__":
 
     print("=== Garden Management System Demo ===")
 
-    manager.add_plant("Alice", "Plant", "Oak Tree", -100, 10)
+    manager.add_plant("Alice", "Plant", "Oak Tree", 100, 10)
     manager.add_plant("Alice", "FloweringPlant", "Rose", 25, 2, "red")
     manager.add_plant("Alice", "PrizeFlower", "Sunflower", 50, 1, "yellow", 10)
 

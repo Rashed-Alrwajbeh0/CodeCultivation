@@ -5,7 +5,7 @@ class Plant:
         self.age = age
 
     def display(self) -> None:
-        print(f"{self.name.capitalize()}: {self.height}cm, {self.age} days old")
+        print(f"{self.name.capitalize()}: {self.height}cm,{self.age} days old")
 
 
 if __name__ == "__main__":
